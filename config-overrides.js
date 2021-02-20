@@ -1,8 +1,10 @@
-const rewireReactHotLoader = require('react-app-rewire-hot-loader');
+const { override, addWebpackAlias } = require('customize-cra');
+const rewireReactHotLoader = require('react-app-rewire-hot-loader-for-customize-cra');
 
 /* config-overrides.js */
-module.exports = function override(config, env) {
-    // eslint-disable-next-line no-param-reassign
-    config = rewireReactHotLoader(config, env);
-    return config;
-};
+module.exports = override(
+    rewireReactHotLoader(),
+    addWebpackAlias({
+        'react-dom': '@hot-loader/react-dom'
+    })
+);
