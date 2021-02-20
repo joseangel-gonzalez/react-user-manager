@@ -1,6 +1,9 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styled from 'styled-components';
 import { PropTypes } from 'prop-types';
+
+import { LoginStatus } from '../constants';
+import AppTypes from '../AppTypes';
 
 const Title = styled.h1`
     font-size: 1.5em;
@@ -10,17 +13,34 @@ const Title = styled.h1`
 
 const Wrapper = styled.section`
     padding: 4em;
-    background: papayawhip;
+    background: ${props => (props.browser ? 'papayawhip' : 'white')};
 `;
 
-const HomeComponent = ({ browser }) => (
-    <Wrapper>
-        <Title>{`Es navegador o no? ${browser}`}</Title>
-    </Wrapper>
-);
+const HomeComponent = ({ login_status, browser, gotoRoute }) => {
+    // Effect
+    useEffect(() => {
+        switch (login_status) {
+            case LoginStatus.LOGGED_IN:
+                // refresh token?
+                break;
+
+            case LoginStatus.LOGGED_OUT:
+                gotoRoute('/login');
+                break;
+        }
+    }, [login_status, gotoRoute]);
+
+    return (
+        <Wrapper browser={browser}>
+            <Title>{`Es navegador o no? ${browser}`}</Title>
+        </Wrapper>
+    );
+};
 
 HomeComponent.propTypes = {
-    browser: PropTypes.bool
+    login_status: AppTypes.enum,
+    browser: PropTypes.bool,
+    gotoRoute: PropTypes.func
 };
 
 export default HomeComponent;
