@@ -1,21 +1,12 @@
 import { configureStore } from '@reduxjs/toolkit';
 
 import { saveState, loadState } from '../../lib/storage';
-import { LoginStatus } from '../constants';
+import { loginCreators } from '../login';
 import createRootReducer from './reducers';
 import createRootMiddleware from './middlewares';
 
-const parseEnums = store => {
-    const parsedStore = store;
-    if (store && store.login && store.login.status && store.login.status.constructor.name !== 'EnumSymbol') {
-        parsedStore.login.status = LoginStatus.enumOf(store.login.status.value);
-    }
-
-    return parsedStore;
-};
-
 export default history => {
-    const preloadedState = parseEnums(loadState());
+    const preloadedState = loadState();
     const store = configureStore({
         reducer: createRootReducer(history),
         middleware: createRootMiddleware(history),
@@ -26,7 +17,7 @@ export default history => {
     if (module.hot) {
         // Enable Webpack hot module replacement for reducers
         module.hot.accept('./reducers', () => {
-            store.replaceReducer(createRootReducer(history), parseEnums(loadState()));
+            store.replaceReducer(createRootReducer(history), loadState());
         });
     }
 
@@ -34,6 +25,13 @@ export default history => {
         const { login } = store.getState();
         saveState({ login });
     });
+
+    if (store.getState().login?.user.token) {
+        setTimeout(
+            () => store.dispatch(loginCreators.expireToken('Su token expiró. Inicie sesión de nuevo')),
+            5000 * 300000
+        );
+    }
 
     return store;
 };

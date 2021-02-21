@@ -1,3 +1,4 @@
+import { getDefaultMiddleware } from '@reduxjs/toolkit';
 import { routerMiddleware } from 'connected-react-router';
 
 import { loginMiddleware } from '../login';
@@ -9,4 +10,9 @@ const appMiddleware = (/*store*/) => next => action => {
     }
 };
 
-export default history => [appMiddleware, loginMiddleware, routerMiddleware(history)];
+export default history => [
+    ...getDefaultMiddleware(),
+    appMiddleware,
+    loginMiddleware,
+    routerMiddleware(history)
+];

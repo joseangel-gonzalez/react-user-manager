@@ -1,7 +1,6 @@
 import React, { Fragment } from 'react';
 import { PropTypes } from 'prop-types';
 import styled from 'styled-components';
-import AppTypes from './AppTypes';
 
 export const ModalBlock = styled.div`
     align-items: center;
@@ -106,8 +105,8 @@ const Modal = ({ title, footer, children, active, hideModal }) => (
 
 Modal.propTypes = {
     title: PropTypes.string,
-    footer: AppTypes.footer,
-    children: AppTypes.children,
+    footer: PropTypes.oneOf([PropTypes.node, PropTypes.string]),
+    children: PropTypes.oneOf([PropTypes.node, PropTypes.arrayOf(PropTypes.node)]),
     active: PropTypes.bool,
     hideModal: PropTypes.func.isRequired
 };

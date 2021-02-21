@@ -65,14 +65,3 @@ export const fetchApi = (route, token, opts) =>
             })
             .catch(err => reject(err));
     });
-
-export const logoutApi = (email, token) =>
-    fetchApi('logout', token, {
-        method: 'POST',
-        headers: {
-            charset: 'UTF-8',
-            'Content-Type': 'application/json',
-            Accept: 'application/json'
-        },
-        body: JSON.stringify({ email })
-    });

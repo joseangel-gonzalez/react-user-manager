@@ -3,7 +3,6 @@ import { PropTypes } from 'prop-types';
 import styled, { keyframes } from 'styled-components';
 
 import { LoginStatus } from '../constants';
-import AppTypes from '../AppTypes';
 import Modal from '../Modal';
 
 const jump = keyframes`
@@ -133,15 +132,15 @@ const LoginComponent = ({ err, status, login, gotoRoute, clear }) => {
                     clear();
                 }}
                 title="Hubo un error">
-                {err && <span>{err.message || err.msg || err}</span>}
+                {err && <span>{err}</span>}
             </Modal>
         </>
     );
 };
 
 LoginComponent.propTypes = {
-    err: PropTypes.object,
-    status: AppTypes.enum,
+    err: PropTypes.string,
+    status: PropTypes.number,
     login: PropTypes.func.isRequired,
     gotoRoute: PropTypes.func.isRequired,
     clear: PropTypes.func.isRequired

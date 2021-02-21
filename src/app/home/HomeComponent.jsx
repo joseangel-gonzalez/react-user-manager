@@ -3,7 +3,6 @@ import styled from 'styled-components';
 import { PropTypes } from 'prop-types';
 
 import { LoginStatus } from '../constants';
-import AppTypes from '../AppTypes';
 
 const Title = styled.h1`
     font-size: 1.5em;
@@ -38,7 +37,7 @@ const HomeComponent = ({ login_status, browser, gotoRoute }) => {
 };
 
 HomeComponent.propTypes = {
-    login_status: AppTypes.enum,
+    login_status: PropTypes.number,
     browser: PropTypes.bool,
     gotoRoute: PropTypes.func
 };

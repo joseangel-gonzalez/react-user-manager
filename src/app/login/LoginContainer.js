@@ -12,7 +12,7 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
     login: (email, password) => dispatch(Creators.loginRequest(email, password)),
     gotoRoute: pathname => dispatch(push(pathname)),
-    clear: () => dispatch(Creators.logoutSuccess())
+    clear: () => dispatch(Creators.expireToken())
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(LoginComponent);
