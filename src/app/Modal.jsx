@@ -94,8 +94,8 @@ const Modal = ({ title, footer, children, active, hideModal }) => (
 
 Modal.propTypes = {
     title: PropTypes.string,
-    footer: PropTypes.oneOf([PropTypes.node, PropTypes.string]),
-    children: PropTypes.oneOf([PropTypes.node, PropTypes.arrayOf(PropTypes.node)]),
+    footer: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
+    children: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.node), PropTypes.node]),
     active: PropTypes.bool,
     hideModal: PropTypes.func.isRequired
 };

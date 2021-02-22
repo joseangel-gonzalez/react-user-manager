@@ -101,7 +101,7 @@ const LoginComponent = ({ err, status, login, gotoRoute, clear }) => {
     };
 
     return (
-        <>
+        <div className="login">
             <Form onSubmit={handleSubmit}>
                 <Header>Introduce tu usuario</Header>
                 <label htmlFor="input-1">Usuario:</label>
@@ -134,7 +134,7 @@ const LoginComponent = ({ err, status, login, gotoRoute, clear }) => {
                 title="Hubo un error">
                 {err && <span>{err}</span>}
             </Modal>
-        </>
+        </div>
     );
 };
 
