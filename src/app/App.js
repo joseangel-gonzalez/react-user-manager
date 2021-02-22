@@ -2,36 +2,13 @@ import React from 'react';
 import { PropTypes } from 'prop-types';
 import { connect } from 'react-redux';
 import { hot } from 'react-hot-loader/root';
-import styled, { createGlobalStyle } from 'styled-components';
+import styled from 'styled-components';
 import { ConnectedRouter } from 'connected-react-router';
 import { Switch, Route } from 'react-router-dom';
 
 import { Home } from './home/';
 import { Login } from './login/';
-
-// Global Style
-const GlobalStyle = createGlobalStyle`
-    * {
-        padding: 0;
-        margin: 0;
-        box-sizing: border-box;
-        background: #FDF9F3;
-    }
-
-    body, html, #root {
-        height: 100%;
-        font-family: -apple-system,
-            Ubuntu,
-            BlinkMacSystemFont,
-            "Segoe UI",
-            Roboto,
-            Oxygen,
-            Cantarell,
-            "Open Sans",
-            "Helvetica Neue",
-            sans-serif;
-    }
-`;
+import GlobalStyle from './injectGlobal';
 
 const Wrapper = styled.section`
     display: flex;

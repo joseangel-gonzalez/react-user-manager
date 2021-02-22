@@ -6,6 +6,5 @@ export const LoginStatus = Object.freeze({
 
 export const RequestStatus = Object.freeze({
     REQUESTING: 0,
-    REQUESTED: 1,
-    RESOLVED: 2
+    REQUESTED: 1
 });

@@ -28,6 +28,8 @@ export const loginFailure = (state = INITIAL_STATE, action) => ({
     err: action.err
 });
 
+export const logout = () => INITIAL_STATE;
+
 export const expireToken = (state = INITIAL_STATE, action) => ({
     ...state,
     ...INITIAL_STATE,
@@ -38,6 +40,7 @@ export const HANDLERS = {
     [Types.LOGIN_REQUEST]: loginRequest,
     [Types.LOGIN_SUCCESS]: loginSuccess,
     [Types.LOGIN_FAILURE]: loginFailure,
+    [Types.LOGOUT]: logout,
     [Types.EXPIRE_TOKEN]: expireToken
 };
 

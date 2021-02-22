@@ -1,8 +1,8 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import { PropTypes } from 'prop-types';
 import styled from 'styled-components';
 
-export const ModalBlock = styled.div`
+const ModalBlock = styled.div`
     align-items: center;
     bottom: 0;
     justify-content: center;
@@ -17,7 +17,7 @@ export const ModalBlock = styled.div`
     z-index: 400;
 `;
 
-export const ModalOverlay = styled.a`
+const ModalOverlay = styled.a`
     background: grey;
     opacity: 0.5;
     bottom: 0;
@@ -29,14 +29,14 @@ export const ModalOverlay = styled.a`
     top: 0;
 `;
 
-export const ModalClose = styled.a`
+const ModalClose = styled.a`
     float: right !important;
     text-decoration: none !important;
     cursor: pointer;
     font-size: 1rem;
 `;
 
-export const ModalContainer = styled.div`
+const ModalContainer = styled.div`
     background: #ffffff;
     border-radius: 0.1rem;
     display: flex;
@@ -50,13 +50,13 @@ export const ModalContainer = styled.div`
     box-shadow: 0 0.2rem 0.5rem rgba(48, 55, 66, 0.3);
 `;
 
-export const ModalBody = styled.div`
+const ModalBody = styled.div`
     overflow-y: auto;
     padding: 30px 10px;
     position: relative;
 `;
 
-export const ModalHeader = styled.div`
+const ModalHeader = styled.div`
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -64,29 +64,18 @@ export const ModalHeader = styled.div`
     padding: 20px 5px 10px 5px;
 `;
 
-export const ModalTitle = styled.span`
+const ModalTitle = styled.span`
     font-size: 30px;
     font-weight: 500;
 `;
 
-export const ModalFooter = styled.div`
+const ModalFooter = styled.div`
     padding: 10px 0px;
     text-align: right;
 `;
 
-export const Button = styled.button`
-    background: #7b2cbf;
-    color: white;
-    font-size: 1em;
-    margin: 10px;
-    padding: 5px 10px;
-    border: 2px solid #7b2cbf;
-    border-radius: 3px;
-    cursor: pointer;
-`;
-
 const Modal = ({ title, footer, children, active, hideModal }) => (
-    <Fragment>
+    <>
         {active && (
             <ModalBlock>
                 <ModalOverlay onClick={() => hideModal()}></ModalOverlay>
@@ -100,7 +89,7 @@ const Modal = ({ title, footer, children, active, hideModal }) => (
                 </ModalContainer>
             </ModalBlock>
         )}
-    </Fragment>
+    </>
 );
 
 Modal.propTypes = {

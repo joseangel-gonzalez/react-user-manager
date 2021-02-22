@@ -1,18 +1,21 @@
 import { connect } from 'react-redux';
 import { push } from 'connected-react-router';
 
+import { homeCreators } from './duck';
 import { loginCreators } from '../login';
 import HomeComponent from './HomeComponent';
 
 const mapStateToProps = state => ({
     browser: state.home.browser,
+    users_status: state.home.status,
+    users: state.home.users,
     login_status: state.login.status
 });
 
 const mapDispatchToProps = dispatch => ({
+    getUsers: page => dispatch(homeCreators.usersRequest(page)),
     gotoRoute: pathname => dispatch(push(pathname)),
-    refresh: () => dispatch(loginCreators.refreshRequest()),
-    logout: () => dispatch(loginCreators.logoutRequest())
+    logout: () => dispatch(loginCreators.logout())
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(HomeComponent);
