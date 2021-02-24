@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
+import { Device } from '../constants';
 import UserLoading from './UserLoading';
 
 export const Row = styled.div`
@@ -25,6 +26,41 @@ export const Row = styled.div`
             right: 80px;
         }
     }
+
+    @media ${Device.mobileS} {
+        height: 70px;
+        padding: 10px 0;
+    }
+
+    @media ${Device.mobileM} {
+        height: 80px;
+        padding: 10px 0;
+    }
+
+    @media ${Device.mobileL} {
+        height: 80px;
+        padding: 10px 0;
+    }
+
+    @media ${Device.tablet} {
+        height: 100px;
+        padding: 20px 0;
+    }
+
+    @media ${Device.laptop} {
+        height: 100px;
+        padding: 20px 0;
+    }
+
+    @media ${Device.laptopL} {
+        height: 100px;
+        padding: 20px 0;
+    }
+
+    @media ${Device.desktop} {
+        height: 100px;
+        padding: 20px 0;
+    }
 `;
 
 export const Avatar = styled.div`
@@ -38,6 +74,76 @@ export const Avatar = styled.div`
         height: 70px;
         border-radius: 50%;
     }
+
+    @media ${Device.mobileS} {
+        width: 50px;
+        height: 50px;
+
+        img {
+            width: 50px;
+            height: 50px;
+        }
+    }
+
+    @media ${Device.mobileM} {
+        width: 60px;
+        height: 60px;
+
+        img {
+            width: 60px;
+            height: 60px;
+        }
+    }
+
+    @media ${Device.mobileL} {
+        width: 60px;
+        height: 60px;
+
+        img {
+            width: 60px;
+            height: 60px;
+        }
+    }
+
+    @media ${Device.tablet} {
+        width: 70px;
+        height: 70px;
+
+        img {
+            width: 70px;
+            height: 70px;
+        }
+    }
+
+    @media ${Device.laptop} {
+        width: 70px;
+        height: 70px;
+
+        img {
+            width: 70px;
+            height: 70px;
+        }
+    }
+
+    @media ${Device.laptopL} {
+        width: 70px;
+        height: 70px;
+
+        img {
+            width: 70px;
+            height: 70px;
+        }
+    }
+
+    @media ${Device.desktop} {
+        width: 70px;
+        height: 70px;
+
+        img {
+            width: 70px;
+            height: 70px;
+        }
+    }
 `;
 
 export const UserInfo = styled.div`
@@ -47,6 +153,48 @@ export const UserInfo = styled.div`
     float: left;
     & > div {
         margin: 2px 0;
+    }
+
+    @media ${Device.mobileS} {
+        width: calc(100% - 140px);
+        height: 50px;
+        padding: 0 10px;
+    }
+
+    @media ${Device.mobileM} {
+        width: calc(100% - 150px);
+        height: 60px;
+        padding: 0 15px;
+    }
+
+    @media ${Device.mobileL} {
+        width: calc(100% - 150px);
+        height: 60px;
+        padding: 0 15px;
+    }
+
+    @media ${Device.tablet} {
+        width: calc(100% - 210px);
+        height: 70px;
+        padding: 0 20px;
+    }
+
+    @media ${Device.laptop} {
+        width: calc(100% - 70px);
+        height: 70px;
+        padding: 0 20px;
+    }
+
+    @media ${Device.laptopL} {
+        width: calc(100% - 70px);
+        height: 70px;
+        padding: 0 20px;
+    }
+
+    @media ${Device.desktop} {
+        width: calc(100% - 70px);
+        height: 70px;
+        padding: 0 20px;
     }
 `;
 

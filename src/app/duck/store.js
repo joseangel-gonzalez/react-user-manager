@@ -29,7 +29,7 @@ export default history => {
     if (store.getState().login?.user.token) {
         setTimeout(
             () => store.dispatch(loginCreators.expireToken('Su token expiró. Inicie sesión de nuevo')),
-            5000 * 300000
+            300000
         );
     }
 

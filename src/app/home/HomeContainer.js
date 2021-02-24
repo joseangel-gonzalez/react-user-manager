@@ -7,7 +7,6 @@ import HomeComponent from './HomeComponent';
 
 const mapStateToProps = state => ({
     err: state.home.err,
-    browser: state.home.browser,
     users_status: state.home.users_status,
     users: state.home.users,
     details_status: state.home.details_status,

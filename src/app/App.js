@@ -37,6 +37,4 @@ App.propTypes = {
     history: PropTypes.object.isRequired
 };
 
-const mapStateToProps = () => ({});
-
-export default hot(connect(mapStateToProps, undefined)(App));
+export default hot(connect(undefined, undefined)(App));

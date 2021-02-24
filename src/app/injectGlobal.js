@@ -1,5 +1,7 @@
 import { createGlobalStyle } from 'styled-components';
 
+import { Device } from './constants';
+
 const GlobalStyle = createGlobalStyle`
     html {
         font-size: 16px
@@ -187,6 +189,62 @@ const GlobalStyle = createGlobalStyle`
                 background: linear-gradient(90deg, #f2f2f2 25%, #e6e6e6 37%, #f2f2f2 63%);
                 animation: loading 1.4s ease infinite;
                 background-size: 400% 100%;
+    }
+
+    @media ${Device.mobileS} {
+        .button {
+            font-size: .6rem;
+            padding: .25rem .25rem;
+            line-height: 1;
+        }
+    }
+
+    @media ${Device.mobileM} {
+        .button {
+            font-size: .6rem;
+            padding: .25rem .25rem;
+            line-height: 1;
+        }
+    }
+
+    @media ${Device.mobileL} {
+        .button {
+            font-size: .6rem;
+            padding: .25rem .25rem;
+            line-height: 1;
+        }
+    }
+
+    @media ${Device.tablet} {
+        .button {
+            padding: .25rem .5rem;
+            font-size: .9rem;
+            line-height: 1.25;
+        }
+    }
+
+    @media ${Device.laptop} {
+        .button {
+            padding: .25rem .5rem;
+            font-size: .9rem;
+            line-height: 1.25;
+        }
+    }
+
+    @media ${Device.laptopL} {
+        .button {
+            padding: .25rem .5rem;
+            font-size: .9rem;
+            line-height: 1.25;
+        }
+    }
+
+    @media ${Device.desktop} {
+        .button {
+            padding: .25rem .5rem;
+            font-size: .9rem;
+            line-height: 1.25;
+        }
     }
 `;
 

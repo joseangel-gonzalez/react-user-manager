@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { PropTypes } from 'prop-types';
 
-import { LoginStatus, RequestStatus } from '../constants';
+import { LoginStatus, RequestStatus, Device } from '../constants';
 import Header from './Header';
 import UsersList from './UserList';
 import DetailsForm from './DetailsForm';
@@ -15,10 +15,37 @@ export const Container = styled.div`
     margin: 0 auto;
     position: relative;
     padding: 3.5rem 1rem;
+
+    @media ${Device.mobileS} {
+        max-width: 320px;
+    }
+
+    @media ${Device.mobileM} {
+        max-width: 370px;
+    }
+
+    @media ${Device.mobileL} {
+        max-width: 400px;
+    }
+
+    @media ${Device.tablet} {
+        max-width: 700px;
+    }
+
+    @media ${Device.laptop} {
+        max-width: 680px;
+    }
+
+    @media ${Device.laptopL} {
+        max-width: 680px;
+    }
+
+    @media ${Device.desktop} {
+        max-width: 680px;
+    }
 `;
 
 const HomeComponent = ({
-    /* browser,*/
     err,
     users_status,
     users,
@@ -79,7 +106,12 @@ const HomeComponent = ({
 
     return (
         <>
-            <Header title={'gestionador de usuarios'} back={details ? clear : undefined} logout={logout} />
+            <Header
+                title={'gestionador de usuarios'}
+                loading={details_status === RequestStatus.REQUESTING}
+                back={details ? clear : undefined}
+                logout={logout}
+            />
             <Container>
                 <div className="container">
                     {!details && (
@@ -108,7 +140,6 @@ const HomeComponent = ({
 };
 
 HomeComponent.propTypes = {
-    browser: PropTypes.bool,
     err: PropTypes.string,
     users_status: PropTypes.number,
     users: PropTypes.object,
