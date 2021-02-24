@@ -8,14 +8,19 @@ import HomeComponent from './HomeComponent';
 const mapStateToProps = state => ({
     err: state.home.err,
     browser: state.home.browser,
-    users_status: state.home.status,
+    users_status: state.home.users_status,
     users: state.home.users,
+    details_status: state.home.details_status,
+    details: state.home.details,
     login_status: state.login.status
 });
 
 const mapDispatchToProps = dispatch => ({
     getUsers: page => dispatch(homeCreators.getUsersRequest(page)),
     deleteUsers: id => dispatch(homeCreators.deleteUsersRequest(id)),
+    getDetails: id => dispatch(homeCreators.getDetailsRequest(id)),
+    updateDetails: (id, data) => dispatch(homeCreators.updateDetailsRequest(id, data)),
+    clear: () => dispatch(homeCreators.clearUsers()),
     gotoRoute: pathname => dispatch(push(pathname)),
     logout: () => dispatch(loginCreators.logout())
 });

@@ -4,26 +4,28 @@ import { RequestStatus } from '../../constants';
 import { Types } from './actions';
 
 export const INITIAL_STATE = {
+    users_status: undefined,
     users: { next_page: 1 },
-    status: undefined,
+    details_status: undefined,
+    details: undefined,
     err: undefined
 };
 
 export const getUsersRequest = (state = INITIAL_STATE) => ({
     ...state,
-    status: RequestStatus.REQUESTING,
+    users_status: RequestStatus.REQUESTING,
     err: undefined
 });
 
 export const getUsersSuccess = (state = INITIAL_STATE, action) => ({
     ...state,
+    users_status: RequestStatus.REQUESTED,
     users: {
         ...state.users,
         ...action.users,
         data: [...(state.users.data || [])].concat(action.users.data),
         next_page: action.users.page + 1
-    },
-    status: RequestStatus.REQUESTED
+    }
 });
 
 export const getUsersFailure = (state = INITIAL_STATE, action) => ({
@@ -34,22 +36,65 @@ export const getUsersFailure = (state = INITIAL_STATE, action) => ({
 
 export const deleteUsersRequest = (state = INITIAL_STATE) => ({
     ...state,
-    status: RequestStatus.REQUESTING,
+    users_status: RequestStatus.REQUESTING,
     err: undefined
 });
 
 export const deleteUsersSuccess = (state = INITIAL_STATE, action) => ({
     ...state,
+    users_status: RequestStatus.REQUESTED,
     users: {
         ...state.users,
         data: [...state.users.data.slice(0, action.index), ...state.users.data.slice(action.index + 1)]
-    },
-    status: RequestStatus.REQUESTED
+    }
 });
 
 export const deleteUsersFailure = (state = INITIAL_STATE, action) => ({
     ...state,
-    status: RequestStatus.REQUESTED,
+    users_status: RequestStatus.REQUESTED,
+    err: action.err
+});
+
+export const getDetailsRequest = (state = INITIAL_STATE) => ({
+    ...state,
+    details: {},
+    details_status: RequestStatus.REQUESTING,
+    err: undefined
+});
+
+export const getDetailsSuccess = (state = INITIAL_STATE, action) => ({
+    ...state,
+    details_status: RequestStatus.REQUESTED,
+    details: action.data
+});
+
+export const getDetailsFailure = (state = INITIAL_STATE, action) => ({
+    ...state,
+    details_status: RequestStatus.REQUESTED,
+    err: action.err
+});
+
+export const updateDetailsRequest = (state = INITIAL_STATE) => ({
+    ...state,
+    details_status: RequestStatus.REQUESTING,
+    old_details: state.details,
+    details: {},
+    err: undefined
+});
+
+export const updateDetailsSuccess = (state = INITIAL_STATE, action) => ({
+    ...state,
+    details_status: RequestStatus.REQUESTED,
+    old_details: undefined,
+    details: action.data,
+    updated_at: action.updated_at
+});
+
+export const updateDetailsFailure = (state = INITIAL_STATE, action) => ({
+    ...state,
+    details_status: RequestStatus.REQUESTED,
+    old_details: undefined,
+    details: state.old_details,
     err: action.err
 });
 
@@ -65,6 +110,12 @@ export const HANDLERS = {
     [Types.DELETE_USERS_REQUEST]: deleteUsersRequest,
     [Types.DELETE_USERS_SUCCESS]: deleteUsersSuccess,
     [Types.DELETE_USERS_FAILURE]: deleteUsersFailure,
+    [Types.GET_DETAILS_REQUEST]: getDetailsRequest,
+    [Types.GET_DETAILS_SUCCESS]: getDetailsSuccess,
+    [Types.GET_DETAILS_FAILURE]: getDetailsFailure,
+    [Types.UPDATE_DETAILS_REQUEST]: updateDetailsRequest,
+    [Types.UPDATE_DETAILS_SUCCESS]: updateDetailsSuccess,
+    [Types.UPDATE_DETAILS_FAILURE]: updateDetailsFailure,
     [Types.CLEAR_USERS]: clearUsers
 };
 

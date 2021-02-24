@@ -8,6 +8,12 @@ const { Types, Creators } = createActions(
         deleteUsersRequest: ['id'],
         deleteUsersSuccess: ['index'],
         deleteUsersFailure: ['err'],
+        getDetailsRequest: ['id'],
+        getDetailsSuccess: ['data'],
+        getDetailsFailure: ['err'],
+        updateDetailsRequest: ['data'],
+        updateDetailsSuccess: ['data', 'updated_at'],
+        updateDetailsFailure: ['err'],
         clearUsers: []
     },
     { prefix: '@@home/' }

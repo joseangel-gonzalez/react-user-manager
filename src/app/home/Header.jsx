@@ -30,17 +30,25 @@ export const Container = styled.div`
         position: absolute;
         top: 50%;
         transform: translateY(-50%);
+        &.back {
+            left: 10px;
+        }
         &.logout {
-            right: 20px;
+            right: -20px;
         }
     }
 `;
 
-const Header = ({ title, logout }) => (
+const Header = ({ title, back, logout }) => (
     <HeaderBar>
         <Container>
             <h1>{title}</h1>
             <div className="buttons">
+                {back && (
+                    <button className="button back" onClick={back}>
+                        Volver
+                    </button>
+                )}
                 <button className="button logout" onClick={logout}>
                     Cerrar Sesión
                 </button>
@@ -51,6 +59,7 @@ const Header = ({ title, logout }) => (
 
 Header.propTypes = {
     title: PropTypes.string.isRequired,
+    back: PropTypes.func,
     logout: PropTypes.func.isRequired
 };
 

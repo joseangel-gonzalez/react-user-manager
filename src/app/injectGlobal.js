@@ -48,8 +48,21 @@ const GlobalStyle = createGlobalStyle`
         width: 100vw;
     }
 
+    .form-box {
+        display: block;
+        width: 92%;
+        max-width: 400px;
+        margin:1.5rem auto;
+    }
+
     form {
         display: block;
+        width: 100%;
+        float: left;
+    }
+
+    .form-group {
+        margin-bottom: 1rem;
         width: 100%;
         float: left;
     }
@@ -60,9 +73,75 @@ const GlobalStyle = createGlobalStyle`
         font-weight: 500;
     }
 
+    .form-input {
+        display: block;
+        width: 100%;
+        line-height: 1.5;
+        padding: .5rem .75rem;
+        font-size: 1rem;
+        color: #495057;
+        background-color: #fff;
+        background-clip: padding-box;
+        border:1px solid #ced4da;
+        transition: border-color .5s ease-in-out;
+        &:focus {
+            color: #495057;
+            background-color: #fff;
+            border-color: #009688;
+            outline: 0;
+        }
+
+        &.error {
+          border-color: red;
+        }
+    }
+
+    .error-block {
+        color: red;
+        font-size: .8rem;
+    }
+
     button,
     input {
         overflow: visible;
+    }
+
+    .form-button {
+        display: block;
+        width: 100%;
+        font-weight: 400;
+        text-align: center;
+        white-space: nowrap;
+        vertical-align: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        border: 1px solid #009688;
+        padding: .5rem .75rem;
+        font-size: 1.35rem;
+        line-height: 1.5;
+        border-radius: .25rem;
+        color: #fff;
+        background-color: #009688;
+        transition: color .5s ease-in-out, background-color .5s ease-in-out, border-color .5s ease-in-out;
+
+        &:not(:disabled):not(.disabled) {
+            cursor: pointer;
+        }
+
+        &:not(:disabled):not(.disabled):hover {
+            background-color:#00796B;
+            border-color:#00796B ;
+        }
+
+        &:focus {
+            outline: none;
+        }
+
+        &.disabled, &:disabled {
+            opacity: .65;
+        }
     }
 
     .button {
