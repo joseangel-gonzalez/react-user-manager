@@ -91,7 +91,7 @@ const DetailsForm = ({ loading, data, onSubmit }) => {
                     <button className="form-button" disabled={loading}>
                         {loading ? (
                             <>
-                                <i className="fas fa-spinner  fa-spin" /> loading ...
+                                <i className="fas fa-spinner  fa-spin" /> Cargando ...
                             </>
                         ) : (
                             'Actualizar'
