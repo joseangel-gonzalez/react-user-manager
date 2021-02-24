@@ -1,10 +1,11 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { PropTypes } from 'prop-types';
 
 import { LoginStatus, RequestStatus } from '../constants';
 import Header from './Header';
 import UsersList from './UserList';
+import Modal from '../Modal';
 
 export const Container = styled.div`
     min-height: 10rem;
@@ -15,8 +16,27 @@ export const Container = styled.div`
     padding: 3.5rem 1rem;
 `;
 
-const HomeComponent = ({ /* browser,*/ users_status, users, login_status, getUsers, gotoRoute, logout }) => {
+const HomeComponent = ({
+    /* browser,*/
+    err,
+    users_status,
+    users,
+    login_status,
+    getUsers,
+    deleteUsers,
+    gotoRoute,
+    logout
+}) => {
+    // State
+    const [active, setActive] = useState(false);
+
     // Effect
+    useEffect(() => {
+        if (err) {
+            setActive(true);
+        }
+    }, [err]);
+
     useEffect(() => {
         switch (login_status) {
             case LoginStatus.LOGGED_IN:
@@ -42,7 +62,7 @@ const HomeComponent = ({ /* browser,*/ users_status, users, login_status, getUse
                 break;
 
             case 'delete':
-                alert(`Borra el usuario: ${data}`);
+                deleteUsers(data);
                 break;
         }
     };
@@ -61,17 +81,23 @@ const HomeComponent = ({ /* browser,*/ users_status, users, login_status, getUse
                     />
                 </div>
             </Container>
+            <Modal active={active} hideModal={() => setActive(false)} title="Hubo un error">
+                {err && <span>{err}</span>}
+            </Modal>
         </>
     );
 };
 
 HomeComponent.propTypes = {
     browser: PropTypes.bool,
+    err: PropTypes.string,
     users_status: PropTypes.number,
     users: PropTypes.object,
     login_status: PropTypes.number,
     getUsers: PropTypes.func.isRequired,
-    gotoRoute: PropTypes.func.isRequired
+    deleteUsers: PropTypes.func.isRequired,
+    gotoRoute: PropTypes.func.isRequired,
+    logout: PropTypes.func.isRequired
 };
 
 export default HomeComponent;

@@ -6,6 +6,7 @@ import { loginCreators } from '../login';
 import HomeComponent from './HomeComponent';
 
 const mapStateToProps = state => ({
+    err: state.home.err,
     browser: state.home.browser,
     users_status: state.home.status,
     users: state.home.users,
@@ -13,7 +14,8 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-    getUsers: page => dispatch(homeCreators.usersRequest(page)),
+    getUsers: page => dispatch(homeCreators.getUsersRequest(page)),
+    deleteUsers: id => dispatch(homeCreators.deleteUsersRequest(id)),
     gotoRoute: pathname => dispatch(push(pathname)),
     logout: () => dispatch(loginCreators.logout())
 });
