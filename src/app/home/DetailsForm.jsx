@@ -88,7 +88,7 @@ const DetailsForm = ({ loading, data, onSubmit }) => {
                     )}
                 </div>
                 <div className="form-group">
-                    <button className="form-btn" disabled={loading}>
+                    <button className="form-button" disabled={loading}>
                         {loading ? (
                             <>
                                 <i className="fas fa-spinner  fa-spin" /> loading ...
