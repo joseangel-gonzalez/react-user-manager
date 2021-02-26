@@ -23,24 +23,24 @@ export const getUsersSuccess = (state = INITIAL_STATE, action) => ({
     users: {
         ...state.users,
         ...action.users,
-        data: [...(state.users.data || [])].concat(action.users.data),
+        data: [...(state.users.data || [])].concat(action.users.data || []),
         next_page: action.users.page + 1
     }
 });
 
 export const getUsersFailure = (state = INITIAL_STATE, action) => ({
     ...state,
-    ...INITIAL_STATE,
+    users_status: RequestStatus.REQUESTED,
     err: action.err
 });
 
-export const deleteUsersRequest = (state = INITIAL_STATE) => ({
+export const deleteUserRequest = (state = INITIAL_STATE) => ({
     ...state,
     users_status: RequestStatus.REQUESTING,
     err: undefined
 });
 
-export const deleteUsersSuccess = (state = INITIAL_STATE, action) => ({
+export const deleteUserSuccess = (state = INITIAL_STATE, action) => ({
     ...state,
     users_status: RequestStatus.REQUESTED,
     users: {
@@ -49,7 +49,7 @@ export const deleteUsersSuccess = (state = INITIAL_STATE, action) => ({
     }
 });
 
-export const deleteUsersFailure = (state = INITIAL_STATE, action) => ({
+export const deleteUserFailure = (state = INITIAL_STATE, action) => ({
     ...state,
     users_status: RequestStatus.REQUESTED,
     err: action.err
@@ -107,9 +107,9 @@ export const HANDLERS = {
     [Types.GET_USERS_REQUEST]: getUsersRequest,
     [Types.GET_USERS_SUCCESS]: getUsersSuccess,
     [Types.GET_USERS_FAILURE]: getUsersFailure,
-    [Types.DELETE_USERS_REQUEST]: deleteUsersRequest,
-    [Types.DELETE_USERS_SUCCESS]: deleteUsersSuccess,
-    [Types.DELETE_USERS_FAILURE]: deleteUsersFailure,
+    [Types.DELETE_USER_REQUEST]: deleteUserRequest,
+    [Types.DELETE_USER_SUCCESS]: deleteUserSuccess,
+    [Types.DELETE_USER_FAILURE]: deleteUserFailure,
     [Types.GET_DETAILS_REQUEST]: getDetailsRequest,
     [Types.GET_DETAILS_SUCCESS]: getDetailsSuccess,
     [Types.GET_DETAILS_FAILURE]: getDetailsFailure,

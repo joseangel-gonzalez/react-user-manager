@@ -21,7 +21,7 @@ export default store => next => action => {
             break;
         }
 
-        case Types.DELETE_USERS_REQUEST: {
+        case Types.DELETE_USER_REQUEST: {
             next(action);
             const { token } = store.getState().login.user;
             const { data } = store.getState().home.users;
@@ -34,10 +34,10 @@ export default store => next => action => {
                 params: { delay: 2 }
             })
                 .then(() =>
-                    store.dispatch(Creators.deleteUsersSuccess(data.findIndex(u => u.id === action.id)))
+                    store.dispatch(Creators.deleteUserSuccess(data.findIndex(u => u.id === action.id)))
                 )
                 .catch(err =>
-                    store.dispatch(Creators.deleteUsersFailure(err.message || err.msg || JSON.stringify(err)))
+                    store.dispatch(Creators.deleteUserFailure(err.message || err.msg || JSON.stringify(err)))
                 );
             break;
         }

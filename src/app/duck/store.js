@@ -26,10 +26,11 @@ export default history => {
         saveState({ login });
     });
 
-    if (store.getState().login?.user.token) {
+    const { login } = store.getState();
+    if (login?.user.token) {
         setTimeout(
             () => store.dispatch(loginCreators.expireToken('Su token expiró. Inicie sesión de nuevo')),
-            300000
+            login.expiration
         );
     }
 

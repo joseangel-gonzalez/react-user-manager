@@ -6,12 +6,13 @@ import { Types } from './actions';
 export const INITIAL_STATE = {
     user: {},
     status: LoginStatus.LOGGED_OUT,
+    expiration: 300000,
     err: undefined
 };
 
 export const loginRequest = (state = INITIAL_STATE, action) => ({
     ...state,
-    user: { ...state.user, email: action.email },
+    user: { ...state.user, email: action.email, token: undefined },
     status: LoginStatus.REQUESTING,
     err: undefined
 });

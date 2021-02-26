@@ -16,7 +16,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
     getUsers: page => dispatch(homeCreators.getUsersRequest(page)),
-    deleteUsers: id => dispatch(homeCreators.deleteUsersRequest(id)),
+    deleteUser: id => dispatch(homeCreators.deleteUserRequest(id)),
     getDetails: id => dispatch(homeCreators.getDetailsRequest(id)),
     updateDetails: (id, data) => dispatch(homeCreators.updateDetailsRequest(id, data)),
     clear: () => dispatch(homeCreators.clearUsers()),

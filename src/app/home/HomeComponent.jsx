@@ -53,7 +53,7 @@ const HomeComponent = ({
     details,
     login_status,
     getUsers,
-    deleteUsers,
+    deleteUser,
     getDetails,
     updateDetails,
     clear,
@@ -99,7 +99,7 @@ const HomeComponent = ({
                 break;
 
             case 'delete':
-                deleteUsers(data);
+                deleteUser(data);
                 break;
         }
     };
@@ -147,7 +147,7 @@ HomeComponent.propTypes = {
     details: PropTypes.object,
     login_status: PropTypes.number,
     getUsers: PropTypes.func.isRequired,
-    deleteUsers: PropTypes.func.isRequired,
+    deleteUser: PropTypes.func.isRequired,
     getDetails: PropTypes.func.isRequired,
     updateDetails: PropTypes.func.isRequired,
     clear: PropTypes.func.isRequired,
