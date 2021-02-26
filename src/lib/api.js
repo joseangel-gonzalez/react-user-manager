@@ -1,3 +1,11 @@
+/**
+ * Function for creating a fetch execution against reqres API with a configured POST object. It manages
+ * posible anwswers an return an object for OK responses or an Error object for KO responses
+ *
+ * @param {string} email
+ * @param {string} password
+ * @public
+ */
 export const loginApi = (email, password) =>
     new Promise((resolve, reject) =>
         fetch('https://reqres.in/api/login', {
@@ -25,6 +33,16 @@ export const loginApi = (email, password) =>
             .catch(err => reject(err))
     );
 
+/**
+ * Function for creating a fetch execution against reqres API with any HTTP request object. It supports
+ * params by querystring or JSON bodies. It manages posible anwswers an return an object for OK responses or
+ * an Error object for KO responses.
+ *
+ * @param {string} route Route that we want to request in Reqres API. It can contain url parameters
+ * @param {string} token JWT token
+ * @param {object} opts Must receive an HTTP Request Object compatible with fetch
+ * @public
+ */
 export const fetchApi = (route, token, opts) =>
     new Promise((resolve, reject) => {
         const url = new URL(`https://reqres.in/api/${route}`);

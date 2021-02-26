@@ -14,6 +14,7 @@ const jump = keyframes`
     }
 `;
 
+/** Header of the login view */
 const Header = styled.h2`
     font-weight: normal;
     color: #2a2a29;
@@ -21,6 +22,7 @@ const Header = styled.h2`
     text-align: center;
 `;
 
+/** Form with two inputs and a button */
 const Form = styled.form`
     margin: 0 auto;
     width: 100%;
@@ -31,6 +33,7 @@ const Form = styled.form`
     position: relative;
 `;
 
+/** Input for both email and password */
 const Input = styled.input`
     max-width: 100%;
     padding: 11px 13px;
@@ -49,6 +52,7 @@ const Input = styled.input`
     }
 `;
 
+/** Login button */
 const Button = styled.button`
     max-width: 100%;
     padding: 11px 13px;
@@ -69,6 +73,9 @@ const Button = styled.button`
     }
 `;
 
+/**
+ * Main component of the login view
+ */
 const LoginComponent = ({ err, status, login, gotoRoute, clear }) => {
     // State
     const [user, setUser] = useState({ email: '', password: '' });
@@ -139,10 +146,15 @@ const LoginComponent = ({ err, status, login, gotoRoute, clear }) => {
 };
 
 LoginComponent.propTypes = {
+    /** prop containing possible login related requests errors */
     err: PropTypes.string,
+    /** prop containing the status of the login related requests */
     status: PropTypes.number,
+    /** prop containing the logged user */
     login: PropTypes.func.isRequired,
+    /** prop containing a helper for dispatching a change of route action */
     gotoRoute: PropTypes.func.isRequired,
+    /** prop containing a helper for dispatching a login clear action */
     clear: PropTypes.func.isRequired
 };
 

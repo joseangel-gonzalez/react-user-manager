@@ -2,6 +2,14 @@
 
 This SPA allows you tu manage users from the API for testing Reqres.in
 
+##  Features:
+  - Log in users
+  - Log out users
+  - Get users list in multiple pages with a request
+  - Get user details with a request
+  - Edit user details with a request and simulate it in Redux store
+  - Delete a user with a request and simulate it in Redux store
+
 ## Installation
 
 To install the proyect you only need yarn installed in your machine and execute the following
@@ -22,4 +30,7 @@ FAST_REFRESH=false
 ```
 
 ## Test
-test
+If you want to test the app, run:
+```
+yarn test
+```
